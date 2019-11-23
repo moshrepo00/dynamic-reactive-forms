@@ -21,6 +21,10 @@ export class SubFormAComponent implements OnInit {
     }));
   }
 
+  getValues() {
+    console.log(this.formService.profileForm.get('people').value);
+  }
+
   patchValue(index) {
     this.t.at(index).patchValue({
       firstName: 'test',

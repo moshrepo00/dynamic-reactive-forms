@@ -10,7 +10,12 @@ export class ParentFormService {
     numberOfPeople: [''],
     firstName: [''],
     lastName: [''],
-    people: new FormArray([])
+    people: new FormArray([
+      this.fb.group({
+        firstName: [''],
+        lastName: ['']
+      })
+    ])
   });
 
   constructor(private fb: FormBuilder) {
