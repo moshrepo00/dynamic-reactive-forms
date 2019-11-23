@@ -42,6 +42,13 @@ export class SubFormAComponent implements OnInit {
     }));
   }
 
+  patchValue(index) {
+    this.t.at(index).patchValue({
+      firstName: 'test',
+      lastName: 'test'
+    });
+  }
+
   delete(index) {
     this.t.removeAt(index);
   }
@@ -50,7 +57,6 @@ export class SubFormAComponent implements OnInit {
     this.formService.profileForm.valueChanges.subscribe(val => {
       console.log(val.people);
     });
-    
   }
 
 }
