@@ -9,32 +9,11 @@ import {FormArray, FormBuilder} from '@angular/forms';
 })
 export class SubFormAComponent implements OnInit {
 
-  options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
   get f() { return this.formService.profileForm.controls; }
   get t() { return this.f.people as FormArray; }
 
-  onChangePeople(e) {
-    const numberOfPeople = e.target.value || 0;
-    if (this.t.length < numberOfPeople) {
-      for (let i = this.t.length; i < numberOfPeople; i++) {
-        this.t.push(this.fb.group({
-          firstName: [''],
-          lastName: ['']
-        }));
-      }
-    } else {
-      for (let i = this.t.length; i >= numberOfPeople; i--) {
-        this.t.removeAt(i);
-      }
-    }
-  }
-
   constructor(public formService: ParentFormService, private fb: FormBuilder) { }
 
-  getValues() {
-    console.log(this.formService.profileForm.get('numberOfPeople').value);
-  }
   addPeople() {
     this.t.push(this.fb.group({
       firstName: [''],
@@ -50,6 +29,7 @@ export class SubFormAComponent implements OnInit {
   }
 
   delete(index) {
+    console.log(index);
     this.t.removeAt(index);
   }
 

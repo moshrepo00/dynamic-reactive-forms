@@ -1,15 +1,15 @@
 <form [formGroup]="formService.profileForm">
-  
+
   <div formGroupName="people" *ngFor="let person of t.controls; let i = index">
     <div [formGroup]="person">
-      <h1>Person {{i + 1}}</h1>
+      <h1>Name {{firstName.value}} {{lastName.value}}</h1>
       <label>
         First Name:
-        <input type="text" formControlName="firstName">
+        <input type="text" formControlName="firstName" #firstName>
       </label>
       <label>
         Last Name:
-        <input type="text" formControlName="lastName">
+        <input type="text" formControlName="lastName" #lastName>
       </label>
       <button (click)="delete(i)">Delete Person</button>
       <button (click)="patchValue(i)">Patch Value</button>
@@ -23,7 +23,5 @@
   Add People
 </button>
 
-<button (click)="getValues()">
-  Get Values
-</button>
+
 
