@@ -1,0 +1,32 @@
+<form [formGroup]="formService.profileForm">
+  <select formControlName="numberOfPeople" (change)="onChangePeople($event)">
+    <option value="">Select Number of People</option>
+    <option *ngFor="let i of options">{{i}}</option>
+  </select>
+
+  <div formGroupName="people" *ngFor="let person of t.controls; let i = index">
+    <div [formGroup]="person">
+        <h1>Person {{i + 1}}</h1>
+        <label>
+          First Name:
+          <input type="text" formControlName="firstName">
+        </label>
+        <label>
+          Last Name:
+          <input type="text" formControlName="lastName">
+        </label>
+        <button (click)="delete(i)">Delete Person</button>
+    </div>
+  </div>
+
+
+</form>
+
+<button (click)="addPeople()">
+  Add People
+</button>
+
+<button (click)="getValues()">
+  Get Values
+</button>
+
